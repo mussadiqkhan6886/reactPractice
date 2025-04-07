@@ -27,7 +27,7 @@ function DigitalClock(){
     }
 
     function padZero(number){
-       return number > 12 ? '' + number : '0' + number
+       return number > 10 ? '' + number : '0' + number
     }
 
     return (
