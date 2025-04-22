@@ -11,7 +11,7 @@ const Home = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        setQuery('')
     }
 
   return (
