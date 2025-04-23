@@ -1,13 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MovieCard from '../components/MovieCard'
+import { getPopularMovies, searchMovie } from '../services/api';
 
 const Home = () => {
-    const movies = [
-        {id: 1, title: 'Inception', year: 2010, genre: 'Sci-Fi'},
-        {id: 2, title: 'The Dark Knight', year: 2008, genre: 'Action'},
-        {id: 3, title: 'Interstellar', year: 2014, genre: 'Sci-Fi'}
-    ]
+    
     const [query, setQuery] = useState('');
+    const [movies, setMovies] = useState([]);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const getMovies = async () => {
+            try{
+                const popularMovies = await getPopularMovies();
+                setMovies(popularMovies);
+                }
+            catch(err){
+                console.log(err)
+                setError("Error in fetching data")
+            }
+            finally {
+                setLoading(false)
+            }
+        }
+        getMovies();
+    }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault();
