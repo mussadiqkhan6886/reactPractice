@@ -8,6 +8,7 @@ const Home = () => {
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [showPopular, setShowPopular] = useState(true)
 
     useEffect(() => {
         const getMovies = async () => {
@@ -38,6 +39,7 @@ const Home = () => {
             const movieSearch = await searchMovie(query);
             setMovies(movieSearch)
             setError(null)
+            setShowPopular(false)
         }catch(err){
             console.log(err);
             setError("failed to search movie.")
@@ -58,11 +60,15 @@ const Home = () => {
 
     {error && <div>{error}</div>}
 
-    {loading ? ( <div>Loading...</div> ) : ( <div className='flex flex-col gap-7 w-full sm:grid sm:grid-cols-2 md:grid-cols-3 cursor-pointer'> 
-        {movies.map(movie => (
-            <MovieCard movie={movie} key={movie.id} /> )
-        )}
-    </div>)}
+    {loading ? ( <div>Loading...</div> ) : ( 
+        <div>
+            {showPopular && <h2 className='text-3xl text-white text-center mb-5 font-bold tracking-wide'>Popular Movies</h2>} 
+            <div className='flex flex-col gap-7 w-full sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 cursor-pointer'> 
+            {movies.map(movie => (
+                <MovieCard movie={movie} key={movie.id} /> )
+            )}
+            </div>
+        </div>)}
     </>
   )
 }

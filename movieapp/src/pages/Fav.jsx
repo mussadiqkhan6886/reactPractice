@@ -6,11 +6,11 @@ const Fav = () => {
 
   const { favorites } = useMovieContext();
 
-  if(favorites){
+  if(favorites.length > 0){
     return ( 
       <div> 
-        <h2>Favorites</h2>
-        <div className='flex flex-col gap-7 w-full sm:grid sm:grid-cols-2 md:grid-cols-3 cursor-pointer'> 
+        <h2 className='text-3xl text-white text-center mb-5 font-bold tracking-wide'>Favorites</h2>
+        <div className='flex flex-col gap-7 w-full sm:grid sm:grid-cols-2 md:grid-cols-3 cursor-pointer lg:grid-cols-5'> 
           {favorites.map(movie => (
               <MovieCard movie={movie} key={movie.id} /> )
           )}
