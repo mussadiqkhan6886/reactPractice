@@ -34,19 +34,18 @@ const GroupedTeamMember = ({employees, setSelectedTeam, selectedTeam}) => {
     }
 
   return (
-    <main>
+    <main className='flex flex-col justify-between items-center w-[60%] m-auto'>
         {groupedEmployees.map((item) => (
-            <div key={item.team}>
-                <h4 id={item.team} onClick={handleClick}>Team Name: {item.team}</h4>
-                <div id={"collapse_" + item.team} className={item.collapsed == true ? "collapsed" : ''}>
-                    <hr />
+            <div key={item.team} className='flex flex-col justify-center items-center w-full'>
+                <h4 className='border-[1px] border-gray-400 w-full text-center p-2 m-1 cursor-pointer bg-gray-200' id={item.team} onClick={handleClick}>Team Name: {item.team}</h4>
+                <di id={"collapse_" + item.team} className={`w-full text-center border-[1px] border-gray-400 ${item.collapsed ? "hidden" : "block"}`}>
                     {item.members.map(member => (
-                        <div>
-                            <h5> <span>Full Name: </span> {member.fullName}</h5>
-                            <p>Designation: {member.designation}</p>
+                        <div className=' w-full p-2'>
+                            <h5 className='font-semibold'> <span>Full Name: </span> {member.fullName}</h5>
+                            <p className='text-[13px]'>Designation: {member.designation}</p>
                         </div>
                     ))}
-                </div>
+                </di>
             </div>
         ))}
     </main>
