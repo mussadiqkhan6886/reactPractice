@@ -122,7 +122,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Employee handleChangeTeam={handleChangeTeam} handleShadow={handleShadow} employees={employees} selectedTeam={selectedTeam} />}>
           </Route>
-          <Route path='/GroupedTeamMember' element={<GroupedTeamMember/>}>
+          <Route path='/GroupedTeamMember' element={<GroupedTeamMember employees={employees} setSelectedTeam={setSelectedTeam} selectedTeam={selectedTeam}/>}>
           </Route>
           <Route path='*' element={<NotFound/>}>
 
