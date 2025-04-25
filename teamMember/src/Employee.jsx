@@ -16,7 +16,7 @@ const Employee = ({handleChangeTeam, handleShadow, selectedTeam, employees}) => 
         </select>
       </div>
       <div>
-        <div className='grid grid-cols-3 gap-5'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
           {employees.map(employee => (
             <div id={employee.id} key={employee.id} onClick={handleShadow} className={`cursor-pointer mt-4 ${employee.teamName == selectedTeam ? 'border-3 border-black' : 'border-[1px] border-gray-400'}`}>
               {(employee.gender == "male") ? <img className='w-full' src={maleProfile} alt="male profile" /> : <img className='w-full' src={femaleProfile} alt="female profile" />} 
