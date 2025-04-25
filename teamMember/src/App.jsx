@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from './Header'
 import Employee from './Employee'
 import Footer from './Footer'
@@ -6,8 +6,8 @@ import { useState } from 'react'
 
 const App = () => {
   
-  const [selectedTeam, setSelectedTeam] = useState("TeamB")
-  const [employees, setEmployees] = useState([{
+  const [selectedTeam, setSelectedTeam] = useState(JSON.parse(localStorage.getItem("selectedTeam")) || "TeamB")
+  const [employees, setEmployees] = useState(JSON.parse(localStorage.getItem("employeeList")) || [{
 
     id: 1,
     fullName: "Bob Jones",
@@ -92,6 +92,14 @@ const App = () => {
     gender: "male",
     teamName: "TeamD"
   }]);
+
+  useEffect(() => {
+      localStorage.setItem("employeeList", JSON.stringify(employees))
+  }, [employees])
+
+  useEffect(() => {
+    localStorage.setItem("SelectedTeam", JSON.stringify(selectedTeam))
+  }, [selectedTeam])
 
   const handleChangeTeam = (e) => {
     setSelectedTeam(e.target.value)
