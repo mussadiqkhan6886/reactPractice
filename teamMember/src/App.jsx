@@ -98,7 +98,7 @@ const App = () => {
   }, [employees])
 
   useEffect(() => {
-    localStorage.setItem("SelectedTeam", JSON.stringify(selectedTeam))
+    localStorage.setItem("selectedTeam", JSON.stringify(selectedTeam))
   }, [selectedTeam])
 
   const handleChangeTeam = (e) => {
