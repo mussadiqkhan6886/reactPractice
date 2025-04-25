@@ -3,6 +3,10 @@ import Header from './Header'
 import Employee from './Employee'
 import Footer from './Footer'
 import { useState } from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Nav from './Nav'
+import GroupedTeamMember from './GroupedTeamMember'
+import NotFound from './NotFound'
 
 const App = () => {
   
@@ -112,9 +116,20 @@ const App = () => {
 
   return (
     <>
-     <Header selectedTeam={selectedTeam} teamMemberCount={employees.filter((employee) => employee.teamName == selectedTeam).length} />
-     <Employee handleChangeTeam={handleChangeTeam} handleShadow={handleShadow} employees={employees} selectedTeam={selectedTeam} />
-     <Footer /> 
+    <Router>
+      <Nav/>
+      <Header selectedTeam={selectedTeam} teamMemberCount={employees.filter((employee) => employee.teamName == selectedTeam).length} />
+        <Routes>
+          <Route path='/' element={<Employee handleChangeTeam={handleChangeTeam} handleShadow={handleShadow} employees={employees} selectedTeam={selectedTeam} />}>
+          </Route>
+          <Route path='/GroupedTeamMember' element={<GroupedTeamMember/>}>
+          </Route>
+          <Route path='*' element={<NotFound/>}>
+
+          </Route>
+        </Routes>
+      <Footer /> 
+     </Router>
     </>
   )
 }
