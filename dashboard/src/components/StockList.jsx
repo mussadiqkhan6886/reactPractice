@@ -43,8 +43,7 @@ const StockList = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Stock List</h1>
+    <div className='flex justify-center'>
       <table className='m-2'>
         <thead className='border-b-1'>
           <tr>
@@ -63,8 +62,8 @@ const StockList = () => {
             <tr className='p-10' key={data.symbol}>
               <th className='text-left px-5'>{data.symbol}</th>
               <td  className='p-1 px-5 text-left'>{data.data.c}</td>
-              <td className={changeColor(data.data.d)}>{data.data.d} {data.data.d > 0 ? <i class="fa-solid fa-arrow-up"></i> : <i class="fa-solid fa-arrow-down"></i>}</td>
-              <td className={changeColor(data.data.dp)}>{data.data.dp} {data.data.dp > 0 ? <i class="fa-solid fa-arrow-up"></i> : <i class="fa-solid fa-arrow-down"></i>}</td>
+              <td className={changeColor(data.data.d)}>{data.data.d} {data.data.d > 0 ? <i className="fa-solid fa-arrow-up"></i> : <i className="fa-solid fa-arrow-down"></i>}</td>
+              <td className={changeColor(data.data.dp)}>{data.data.dp} {data.data.dp > 0 ? <i className="fa-solid fa-arrow-up"></i> : <i className="fa-solid fa-arrow-down"></i>}</td>
               <td  className='p-1 px-5 text-left'>{data.data.h}</td>
               <td className='p-1 px-5 text-left' >{data.data.l}</td>
               <td className='p-1 px-5 text-left' >{data.data.o}</td>
