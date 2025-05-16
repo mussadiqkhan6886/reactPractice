@@ -6,37 +6,31 @@ const StockList = () => {
     const [stock, setStock] = useState();
 
     useEffect(() => {
-        let isMounted = false
+        let isMounted = true
+
         const fetchData = async () => {
-            const responses = []
-            try{
-                const response = await finnHub.get("/quote", {
-                    params: {
-                        symbol: "MFST"
-                    }
-                })
-                responses.push(response)
-                
-                const response2 = await finnHub.get("/quote", {
-                    params: {
-                        symbol: "AMZ"
-                    }
-                })
-                responses.push(response2)
-                const response3 = await finnHub.get("/quote", {
-                    params: {
-                        symbol: "GOOGL"
-                    }
-                })
-                responses.push(response3)
+            try {
+                const responses = await Promise.all(
+                    watchList.map((symbol) => 
+                        finnHub.get("/quote", {
+                            params: { symbol }
+                        })
+                    )
+                )
                 console.log(responses)
-            }catch(err){
-                console.log(err)
+                if (isMounted) {
+                    setStock(responses)
+                }
+            } catch (err) {
+                console.error(err)
             }
         }
+
         fetchData()
 
-        return () => isMounted = false
+        return () => {
+            isMounted = false
+        }
     }, [])
 
   return (
