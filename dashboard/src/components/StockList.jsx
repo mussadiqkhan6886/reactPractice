@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import finnHub from '../apis/finnHub';
+import { WatchListContext } from '../contextAPI/WatchListContext';
 
 const StockList = () => {
-  const [watchList, setWatchList] = useState(['GOOGL', 'MSFT', 'AMZN']);
   const [stock, setStock] = useState([]);
+  const { watchList } = useContext(WatchListContext)
 
   const changeColor = (change) => {
     return change > 0 ? 'text-green-600' : 'text-red-600';
@@ -40,7 +41,7 @@ const StockList = () => {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [watchList]);
 
   return (
     <div className='flex justify-center'>
