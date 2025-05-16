@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import finnHub from '../apis/finnHub';
 import { WatchListContext } from '../contextAPI/WatchListContext';
 
 const StockList = () => {
   const [stock, setStock] = useState([]);
   const { watchList } = useContext(WatchListContext)
+    const navigate = useNavigate()
 
   const changeColor = (change) => {
     return change > 0 ? 'text-green-600' : 'text-red-600';
@@ -43,6 +45,10 @@ const StockList = () => {
     };
   }, [watchList]);
 
+  const handlePageChange = (symbol) => {
+    navigate(`details/${symbol}`)
+  }
+
   return (
     <div className='flex justify-center'>
       <table className='m-2'>
@@ -60,7 +66,7 @@ const StockList = () => {
         </thead>
         <tbody>
           {stock.map((data) => (
-            <tr className='p-10' key={data.symbol}>
+            <tr onClick={() => handlePageChange(data.symbol)} className='p-10 cursor-pointer' key={data.symbol}>
               <th className='text-left px-5'>{data.symbol}</th>
               <td  className='p-1 px-5 text-left'>{data.data.c}</td>
               <td className={changeColor(data.data.d)}>{data.data.d} {data.data.d > 0 ? <i className="fa-solid fa-arrow-up"></i> : <i className="fa-solid fa-arrow-down"></i>}</td>
