@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const TOKEN = "d0ig4qpr01qrfsafuuigd0ig4qpr01qrfsafuuj0"
+const TOKEN = "d0k73fhr01qqlggvgo20d0k73fhr01qqlggvgo2g"
 
 export default axios.create({
     baseURL: "https://finnhub.io/api/v1",

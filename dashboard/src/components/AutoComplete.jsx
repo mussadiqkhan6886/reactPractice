@@ -43,8 +43,7 @@ const AutoComplete = () => {
         }  else{
             setResults([])
         }
-        console.log(results)
-        
+         
         return () => ( isMounted = false )
     }, [value])
     
