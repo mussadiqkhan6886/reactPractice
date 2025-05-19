@@ -40,6 +40,7 @@ const StockDetailPage = () => {
   return (
     <div>
       <h1>Details Page {symbol}</h1>
+      <h1 className='text-3xl'>API failed</h1>
     </div>
   )
 }
