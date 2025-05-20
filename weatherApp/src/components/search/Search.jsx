@@ -28,7 +28,6 @@ const Search = () => {
     <div className='flex justify-center items-center w-full flex-col'>
       <input className='border-1 rounded-xl w-80' type="text" placeholder='Enter city name' onChange={handleChange} value={query} autoComplete='off'  />
       <button className='bg-black text-white' onClick={submitData}>Search</button>
-      <h1>{result.name}</h1>
     </div>
   )
 }
