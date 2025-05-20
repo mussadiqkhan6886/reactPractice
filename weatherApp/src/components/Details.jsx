@@ -1,12 +1,9 @@
-import React, { useContext } from 'react'
-import { ResultContext } from '../context/ResultContext'
+import ShowWeather from "./ShowWeather"
 
-const Details = () => {
-    const {result} = useContext(ResultContext)
-
+const Details = ({start}) => {
   return (
     <div>
-      
+        {start && <ShowWeather />}
     </div>
   )
 }
