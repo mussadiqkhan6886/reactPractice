@@ -54,7 +54,7 @@ const Search = () => {
           {error && <p className="text-red-500 mt-2">{error}</p>}
         </div>
       </header>
-      <main>
+      <main className='m-3'>
           <Details start={start} />
       </main>
     </>
