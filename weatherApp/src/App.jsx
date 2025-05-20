@@ -1,7 +1,6 @@
 import Search from "./components/search/Search"
 import { ResultProvider } from "./context/ResultContext"
-
-
+import Details from "./components/details"
 function App() {
 
  
@@ -9,7 +8,7 @@ function App() {
     <>
     <ResultProvider>
       <Search />
-
+      <Details />
     </ResultProvider>
     </>
   )
