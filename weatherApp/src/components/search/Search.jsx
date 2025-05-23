@@ -17,6 +17,7 @@ const Search = () => {
   }
 
   const submitData = async () => {
+    setQuery("")
     setLoading(true)
     setError("")
     try {
@@ -39,16 +40,16 @@ const Search = () => {
 
   return (
     <>
-      <header className='flex justify-center items-center w-full flex-col'>
+      <header className='flex justify-center items-center w-full flex-row gap-10 p-4 bg-gray-500'>
         <input
-          className='border-1 rounded-xl w-80'
+          className='rounded p-1 px-2 bg-gray-200 w-80 outline-0'
           type="text"
           placeholder='Enter city name'
           onChange={handleChange}
           value={query}
           autoComplete='off'
         />
-        <button className='bg-black text-white' onClick={submitData}>Search</button>
+        <button className='bg-black text-white border-0 rounded cursor-pointer py-1 px-4' onClick={submitData}>Search</button>
         <div>
           {loading && <Loading />}
           {error && <p className="text-red-500 mt-2">{error}</p>}
