@@ -1,24 +1,13 @@
-import { useContext, useEffect } from "react"
-import { ListContext } from "../context/ListContext"
-
 const List = ({id, list, item, checked, setList}) => {
-
-  const {searchValue} = useContext(ListContext)
 
   const handleCheckChange = (id) => {
     const changedList = list.map(items => items.id === id ? {...items, checked: !checked} : items)
     setList(changedList)
-    console.log(list)
   }
   
   const handleDelete = (id) => {
     setList(list.filter((item) => item.id != id))
   }
-
-  useEffect(() => {
-    localStorage.setItem("listItems", JSON.stringify(list))
-    console.log(list)
-  }, [list])
 
   return (
     <li className='flex justify-between'>

@@ -1,20 +1,32 @@
 import React, { useState, useContext, useRef } from 'react'
 import { ListContext } from '../context/ListContext'
+import ApiRequest from "../ApiRequest"
 
 const Add = () => {
   const [addItem, setAddItem] = useState("")
-  const {list, setList} = useContext(ListContext)
+  const {list, setList, URL, setError} = useContext(ListContext)
 
   const userRef = useRef()
 
-  const addItemToList = (e) => {
+  const addItemToList = async (e) => {
     e.preventDefault()
     if(!addItem) return
     const id = list.map((item) => item.id ? list[list.length - 1].id + 1 : 1) 
-    const newList = [...list, {id, item: addItem, checked: false}]
+    const newItem = {id, item: addItem, checked: false}
+    const newList = [...list, newItem]
     setList(newList)
     setAddItem("")
     userRef.current.focus()
+
+    const postOpt = {
+      method: "POST",
+      headers: {
+        'Content-Type' : "application/json"
+      },
+      body : JSON.stringify(newItem)
+    }
+    const result = await ApiRequest(URL, postOpt)
+    if(result) setError(result)
   }
 
   return (

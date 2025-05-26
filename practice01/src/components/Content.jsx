@@ -1,24 +1,16 @@
 import React, {useContext} from 'react'
 import { ListContext } from '../context/ListContext'
-import List from './List'
+import Data from './Data'
 
 const Content = () => {
 
-  const {list, setList} = useContext(ListContext)
+  const {loading, error} = useContext(ListContext)
   
   return (
     <>
-      {list.length ? (
-        <div className=' flex flex-col gap-3 h-full overflow-x-hidden p-4 overflow-scroll'>
-      {list.map((item) => (
-        <List key={item.id} id={item.id} list={list} item={item.item} checked={item.checked} setList={setList}/>
-      ))}
-    </div>
-      ) : (
-        <div className='flex justify-center items-center h-full'>
-          <h1 className='text-2xl text-white'>No Items in list</h1>
-        </div>
-      )}
+      {loading && <h1 className='text-center font-medium text-xl mt-1 text-blue-900'>Loading...</h1>}
+      {error && <h1 className='text-center font-medium text-xl mt-1 text-red-500'>Did not get any data from server</h1>}
+      {!error && !loading && <Data />} 
     </>
     
   )
