@@ -11,7 +11,7 @@ const Add = () => {
   const addItemToList = async (e) => {
     e.preventDefault()
     if(!addItem) return
-    const id = list.map((item) => item.id ? list[list.length - 1].id + 1 : 1) 
+    const id = list.length ? list[list.length - 1].id + 1 : 1 
     const newItem = {id, item: addItem, checked: false}
     const newList = [...list, newItem]
     setList(newList)

@@ -1,12 +1,34 @@
-const List = ({id, list, item, checked, setList}) => {
+import { useContext } from "react"
+import { ListContext } from "../context/ListContext"
+import ApiRequest from "../ApiRequest"
 
-  const handleCheckChange = (id) => {
+const List = ({id, list, item, checked, setList}) => {
+  const {URL, setError} = useContext(ListContext)
+
+  const handleCheckChange = async (id) => {
     const changedList = list.map(items => items.id === id ? {...items, checked: !checked} : items)
     setList(changedList)
+
+    const newItem = changedList.filter(item => item.id == id)
+    const updateOpt = {
+      method: "PATCH",
+      headers: {
+        "Content-Type" : "application/json"
+      },
+      body: JSON.stringify({checked: newItem[0].checked})
+    }
+    const reqUrl = `${URL}/${id}`
+    const result = await ApiRequest(reqUrl, updateOpt)
+    if(result) setError(result)
+    console.log(newItem[0].checked)
   }
   
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     setList(list.filter((item) => item.id != id))
+    const option = {method: "DELETE"}
+    const reqUrl = `${URL}/${id}`
+    const result = await ApiRequest(reqUrl, option)
+    if(result) setError(result)
   }
 
   return (
