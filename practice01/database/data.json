@@ -1,29 +1,24 @@
 {
   "items": [
     {
-      "id": "2",
-      "item": "Banana, Apple",
-      "checked": true
-    },
-    {
       "id": "3",
       "item": "Sugar, Oil",
       "checked": true
     },
     {
-      "id": "4",
+      "id": "31",
       "item": "vegetables",
       "checked": false
     },
     {
-      "id": "5",
+      "id": "311",
       "item": "milk",
       "checked": false
     },
     {
-      "id": "6",
-      "item": "hi",
-      "checked": true
+      "id": "3111",
+      "item": "Banana ",
+      "checked": false
     }
   ]
 }

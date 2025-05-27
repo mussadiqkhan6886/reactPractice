@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { ListContext } from '../context/ListContext'
 
 const Search = () => {
-  const [searchValue, setSearchValue] = useState("")
 
+  const {searchValue, setSearchValue} = useContext(ListContext)
+ 
   const handleChange = (e) => {
-    setSearchValue(e.target.setSearchValue)
+    e.preventDefault()
+    setSearchValue(e.target.value)
     
   }
 

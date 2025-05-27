@@ -8,13 +8,13 @@ const App = () => {
   return (
     <>
     <ListContextProvider>
-      <header className="w-[400px] bg-blue-600 text-center">
+      <header className="min-w-[500px] bg-blue-600 text-center">
         <Header />
       </header>
-      <main className="bg-blue-300  min-h-[300px] w-[400px]">
+      <main className="bg-blue-300  min-h-[300px] min-w-[500px]">
         <Content />
       </main>
-      <footer className="w-[400px] bg-blue-600 text-center">
+      <footer className="min-w-[500px] bg-blue-600 text-center">
         <Footer />
       </footer>
     </ListContextProvider>

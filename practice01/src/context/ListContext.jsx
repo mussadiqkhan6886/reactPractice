@@ -23,13 +23,12 @@ export const ListContextProvider = ({children}) => {
                 setLoading(false)
             }
         }
-        setTimeout(() => {
             (async () => await fetchData())()
-        }, 2000)
+        
     }, [])
 
     const [searchValue, setSearchValue] = useState("")
-    return <ListContext.Provider value={{list, setList, searchValue, loading, error, URL, setError}}>
+    return <ListContext.Provider value={{list, setList, searchValue, setSearchValue, loading, error, URL, setError}}>
         {children}
     </ ListContext.Provider>
 }
